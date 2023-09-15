@@ -13,5 +13,5 @@ package-install:
 gendiff:
 	poetry run gendiff
 
-lint:
+check:
 	poetry run flake8 gendiff/

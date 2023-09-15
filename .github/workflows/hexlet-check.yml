@@ -26,8 +26,14 @@ jobs:
       - name: Install dependencies
         run: |
           make install
+      - name: Build project
+        run: |
           make build
+      - name: Publish
+        run: |
           make publish
+      - name: pack install
+        run: |
           make package-install
       - name: Run linter and pytest
         run: |

@@ -25,24 +25,16 @@ jobs:
         # make depends on poetry
       - name: Install dependencies
         run: |
-          poetry install
-      - name: Build project
-        run: |
-          poetry build
-      - name: Publish
-        run: |
-          poetry publish
-      - name: pack install
-        run: |
-          python3 -m pip install --user --force-reinstall dist/*.whl
+          pip install poetry
+          make install
       - name: Run linter and pytest
         run: |
-          poetry run flake8 gendiff/
-      # - name: Test & publish code coverage
-      #   uses: paambaati/codeclimate-action@v3.2.0
-      #   if: github.ref_name == 'main'
-      #   env:
-      #     CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      #   with:
-      #     coverageCommand: make test-coverage
-      #     debug: true
+          make check
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.2.0
+        if: github.ref_name == 'main'
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          debug: true

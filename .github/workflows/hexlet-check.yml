@@ -25,19 +25,19 @@ jobs:
         # make depends on poetry
       - name: Install dependencies
         run: |
-          make install
+          poetry install
       - name: Build project
         run: |
-          make build
+          poetry build
       - name: Publish
         run: |
-          make publish
+          poetry publish
       - name: pack install
         run: |
-          make package-install
+          python3 -m pip install --user --force-reinstall dist/*.whl
       - name: Run linter and pytest
         run: |
-          make lint
+          poetry run flake8 gendiff/
       # - name: Test & publish code coverage
       #   uses: paambaati/codeclimate-action@v3.2.0
       #   if: github.ref_name == 'main'

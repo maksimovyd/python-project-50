@@ -29,7 +29,10 @@ def generate_diff(file_path1, file_path2):
 
 
 def generate_result_string_dif(f_path1, f_path2, json_dict_o, json_dict_t):
-    res = 'gendiff ' + str(os.path.basename(f_path1)) + ' ' + str(os.path.basename(f_path2)) + '\n' + '{' + '\n'
+    res = (
+        'gendiff ' + str(os.path.basename(f_path1)) + ' ' +
+        str(os.path.basename(f_path2)) + '\n' + '{' + '\n'
+    )
     for key, value in sorted(json_dict_o.items() | json_dict_t.items()):
         if key in json_dict_o:
             if (

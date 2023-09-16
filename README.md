@@ -6,5 +6,4 @@
 ![GitHub 
 Actions](https://github.com/maksimovyd/python-project-50/workflows/hexlet-check/badge.svg)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/650500538fe6011d137b5715/maintainability)](https://codeclimate.com/github/ваш-логин/ваш-репозиторий/maintainability)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/e1d6b5a111c187eecb16/maintainability)](https://codeclimate.com/github/maksimovyd/python-project-50/maintainability)

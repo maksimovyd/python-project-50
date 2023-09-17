@@ -1,4 +1,4 @@
-from gendiff.scripts import gendiff
+from gendiff.scripts import parser
 import os
 
 
@@ -9,7 +9,7 @@ def test_flat_gendiff():
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_1_2.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert gendiff.generate_diff(file_path1, file_path2) == str(res_file_1_2)
+    assert parser.generate_diff(file_path1, file_path2) == str(res_file_1_2)
 
 
 def test_flat_gendiff_two_empty_file_two():
@@ -19,7 +19,17 @@ def test_flat_gendiff_two_empty_file_two():
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_flat_2.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert gendiff.generate_diff(file_path1, file_path2) == str(res_file_1_2)
+    assert parser.generate_diff(file_path1, file_path2) == str(res_file_1_2)
+
+
+def test_yml():
+    current_dir = os.path.dirname(__file__)
+    file_path1 = os.path.join(current_dir, 'fixtures', 'yml_file1.yml')
+    file_path2 = os.path.join(current_dir, 'fixtures', 'yml_file2.yml')
+    file_res = os.path.join(current_dir, 'fixtures', 'res_test_yml_1_2.txt')
+    with open(file_res, 'r') as res_test_1_2:
+        res_file_1_2 = res_test_1_2.read()
+    assert parser.generate_diff(file_path1, file_path2) == str(res_file_1_2)
 
 
 # Ожидаемое значение в тестах — объемная строчка. А в будущих шагах она станет значительно сложнее. В таких случаях принято сохранять их также в фикстуры в виде текстовых файлов и читать в нужных тестах

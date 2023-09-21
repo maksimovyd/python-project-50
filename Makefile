@@ -23,7 +23,4 @@ package-install:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
 gendiff:
-	poetry run gendiff
-
-check:
-	poetry run flake8 gendiff/
+	poetry run gendiff.scripts.gendiff

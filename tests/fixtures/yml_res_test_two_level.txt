@@ -1,11 +1,11 @@
 gendiff yml_file_1_two_level.yml yml_file_2_two_level.yml
 {
     common: {
-      + follow: False
+      + follow: false
         setting1: Value 1
       - setting2: 200
-      - setting3: True
-      + setting3: None
+      - setting3: true
+      + setting3: null
       + setting4: blah blah
       + setting5: {
             key5: value5

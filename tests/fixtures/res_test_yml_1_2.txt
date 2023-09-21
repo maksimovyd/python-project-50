@@ -2,11 +2,11 @@ gendiff yml_file1.yml yml_file2.yml
 {
   - age: 30
   - city: New York
-  + follow: False
-    is_student: False
+  + follow: false
+    is_student: false
   - name: John Doe
   - proxy: 123.234.53.00
   + proxy: 123.234.53.22
   + timeout: 50
-  + value: None
+  + value: null
 }

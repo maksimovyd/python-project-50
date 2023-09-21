@@ -17,7 +17,7 @@ def generate_diff(file_path1, file_path2, formatter):
             )
         print(res_str)
         return res_str
-    else:
+    elif formatter == 'plain':
         res_str = plain(res_dict, dict_one, dict_two, [], '')
         res_str = (
             'gendiff --format plain ' + str(os.path.basename(file_path1)) +
@@ -26,6 +26,9 @@ def generate_diff(file_path1, file_path2, formatter):
         res_str = res_str[:-1]
         print(res_str)
         return res_str
+    elif formatter == 'json':
+        print(json.dumps(res_dict))
+        return json.dumps(res_dict)
 
 
 def create_diff(dict_one, dict_two):

@@ -9,7 +9,7 @@ def main():
     parser.add_argument("second_file", help="The second configuration file.")
     parser.add_argument(
         "-f", "--format", help="set format of output",
-        default="stylish", choices=["stylish", "plain"])
+        default="stylish", choices=["stylish", "plain", "json"])
     args = parser.parse_args()
     generate_diff(args.first_file, args.second_file, formatter=args.format)
 

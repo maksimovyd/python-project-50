@@ -1,5 +1,5 @@
-from gendiff.scripts import parser
 import os
+from gendiff.scripts.parser import generate_diff
 
 
 def test_flat_gendiff():
@@ -9,7 +9,7 @@ def test_flat_gendiff():
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_1_2.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert parser.generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
 
 
 def test_flat_gendiff_two_empty_file_two():
@@ -19,7 +19,7 @@ def test_flat_gendiff_two_empty_file_two():
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_flat_2.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert parser.generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
 
 
 def test_yml():
@@ -29,7 +29,7 @@ def test_yml():
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_yml_1_2.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert parser.generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
 
 
 def test_two_level_yml():
@@ -39,7 +39,7 @@ def test_two_level_yml():
     file_res = os.path.join(current_dir, 'fixtures', 'yml_res_test_two_level.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert parser.generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
 
 
 def test_two_level_json():
@@ -49,7 +49,7 @@ def test_two_level_json():
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_two_level.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert parser.generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
 
 
 def test_two_level_plain_yml():
@@ -59,7 +59,7 @@ def test_two_level_plain_yml():
     file_res = os.path.join(current_dir, 'fixtures', 'res_plain_yml.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert parser.generate_diff(file_path1, file_path2, 'plain') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, 'plain') == str(res_file_1_2)
 
 
 def test_two_level_plain_json():
@@ -69,8 +69,4 @@ def test_two_level_plain_json():
     file_res = os.path.join(current_dir, 'fixtures', 'res_plain_json.txt')
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert parser.generate_diff(file_path1, file_path2, 'plain') == str(res_file_1_2)
-
-
-# Ожидаемое значение в тестах — объемная строчка. А в будущих шагах она станет значительно сложнее. В таких случаях принято сохранять их также в фикстуры в виде текстовых файлов и читать в нужных тестах
-# Убрать строку сравнение в файл
+    assert generate_diff(file_path1, file_path2, 'plain') == str(res_file_1_2)

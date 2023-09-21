@@ -1,6 +1,8 @@
 import json
 import os
 import yaml
+from gendiff.scripts.stylish import stylish
+from gendiff.scripts.plain import plain
 
 
 def generate_diff(file_path1, file_path2, formatter):
@@ -16,27 +18,14 @@ def generate_diff(file_path1, file_path2, formatter):
         print(res_str)
         return res_str
     else:
-        return res_dict
-
-
-def stylish(data, symb='    ', count=1, depth=0):
-    result = []
-    if not isinstance(data, (list, tuple, set, dict)):
-        return str(data)
-    cur_sym = symb * depth * count
-    if isinstance(data, (dict)):
-        result.append('{')
-        for key in data.keys():
-            if key[0] == ' ':
-                result.append(cur_sym + key + ': '
-                              + stylish(data[key], symb, count, depth + 1)
-                              )
-            else:
-                result.append((symb * (depth + count)) +
-                              key + ': ' +
-                              stylish(data[key], symb, count, depth+1))
-    result.append(symb * (depth) * count + '}')
-    return '\n'.join(result)
+        res_str = plain(res_dict, dict_one, dict_two, [], '')
+        res_str = (
+            'gendiff --format plain ' + str(os.path.basename(file_path1)) +
+            ' ' + str(os.path.basename(file_path2)) + '\n' + res_str
+            )
+        res_str = res_str[:-1]
+        print(res_str)
+        return res_str
 
 
 def create_diff(dict_one, dict_two):

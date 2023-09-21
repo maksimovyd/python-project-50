@@ -6,35 +6,19 @@
 name: hexlet-check
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        # we want to test our package on several versions of Python
-        python-version: [3.11.4]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+
+      - name: Hexlet project check
+        uses: hexlet/project-action@release
         with:
-          python-version: ${{ matrix.python-version }}
-        # make depends on poetry
-      - name: Install dependencies
-        run: |
-          pip install poetry
-          make install
-      - name: Run linter and pytest
-        run: |
-          make check
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v3.2.0
-        if: github.ref_name == 'main'
-        env:
-          CC_TEST_REPORTER_ID: d6e874d5ffba5fd8ff4466e3b1d80e23cb53bcf99bd386e141505a2b73825100
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+          hexlet-id: ${{ secrets.HEXLET_ID }}

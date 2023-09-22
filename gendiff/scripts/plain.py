@@ -43,5 +43,7 @@ def refund_val(value):
         return 'true'
     elif str(value) == 'None':
         return 'null'
+    elif isinstance(value, int):
+        return str(value)
     else:
         return f'\'{value}\''

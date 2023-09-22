@@ -18,8 +18,7 @@ def stylish(data, symb='    ', count=1, depth=0):
                               + stylish(data[key], symb, count, depth + 1)
                               )
             else:
-                result.append((symb * (depth + count)) + 
-                              key + ': ' + 
-                              stylish(data[key], symb, count, depth + 1))
+                result.append((symb * (depth + count)) + key + ': '
+                              + stylish(data[key], symb, count, depth + 1))
     result.append(symb * (depth) * count + '}')
     return '\n'.join(result)

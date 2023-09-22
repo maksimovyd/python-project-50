@@ -21,7 +21,7 @@ if __name__ == "__main__":
     main()
 
 
-def generate_diff(file_path1, file_path2, formatter):
+def generate_diff(file_path1, file_path2, formatter='stylish'):
     dict_one = read_files_to_dict(file_path1)
     dict_two = read_files_to_dict(file_path2)
     res_dict = create_diff(dict_one, dict_two)

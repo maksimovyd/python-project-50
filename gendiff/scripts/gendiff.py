@@ -43,12 +43,12 @@ def generate_diff(file_path1, file_path2, formatter='stylish'):
         print(res_str)
         return res_str
     elif formatter == 'json':
-        res_dict = create_diff_json(dict_one, dict_two)
-        json_str = json.dumps(res_dict, indent=2)
+        res_dict = create_diff(dict_one, dict_two)
+        json_str = json.dumps(res_dict, indent=4)
         print("\n".join(json_str.splitlines()))
         return "\n".join(json_str.splitlines())
-        # print(json.dumps(create_diff_json(dict_one, dict_two)))
-        # return json.dumps(create_diff_json(dict_one, dict_two))
+        # print(json.dumps(create_diff(dict_one, dict_two)))
+        # return json.dumps(create_diff(dict_one, dict_two))
 
 
 def create_diff(dict_one, dict_two):
@@ -58,8 +58,10 @@ def create_diff(dict_one, dict_two):
         if key_ in dict_one and key_ in dict_two:
             if isinstance(dict_one[key_], dict) and \
                isinstance(dict_two[key_], dict):
-                res_dict[('    ' +
-                          key_)] = create_diff(dict_one[key_], dict_two[key_])
+                res_dict[('    ' + key_)] = create_diff(
+                    dict_one[key_],
+                    dict_two[key_]
+                    )
             elif dict_one[key_] == dict_two[key_]:
                 res_dict[('    ' + key_)] = dict_one[key_]
             else:

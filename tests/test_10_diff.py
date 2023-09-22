@@ -7,9 +7,10 @@ def test_flat_gendiff():
     file_path1 = os.path.join(current_dir, 'fixtures', 'file1.json')
     file_path2 = os.path.join(current_dir, 'fixtures', 'file2.json')
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_1_2.txt')
+    formatter = 'stylish'
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, formatter) == str(res_file_1_2)
 
 
 def test_flat_gendiff_two_empty_file_two():
@@ -17,9 +18,10 @@ def test_flat_gendiff_two_empty_file_two():
     file_path1 = os.path.join(current_dir, 'fixtures', 'file_test_flat2_1.json')
     file_path2 = os.path.join(current_dir, 'fixtures', 'file_test_flat2_2.json')
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_flat_2.txt')
+    formatter = 'stylish'
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, formatter) == str(res_file_1_2)
 
 
 def test_yml():
@@ -27,9 +29,10 @@ def test_yml():
     file_path1 = os.path.join(current_dir, 'fixtures', 'yml_file1.yml')
     file_path2 = os.path.join(current_dir, 'fixtures', 'yml_file2.yml')
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_yml_1_2.txt')
+    formatter = 'stylish'
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, formatter) == str(res_file_1_2)
 
 
 def test_two_level_yml():
@@ -37,9 +40,10 @@ def test_two_level_yml():
     file_path1 = os.path.join(current_dir, 'fixtures', 'yml_file_1_two_level.yml')
     file_path2 = os.path.join(current_dir, 'fixtures', 'yml_file_2_two_level.yml')
     file_res = os.path.join(current_dir, 'fixtures', 'yml_res_test_two_level.txt')
+    formatter = 'stylish'
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, formatter) == str(res_file_1_2)
 
 
 def test_two_level_json():
@@ -47,9 +51,10 @@ def test_two_level_json():
     file_path1 = os.path.join(current_dir, 'fixtures', 'file_1_two_level.json')
     file_path2 = os.path.join(current_dir, 'fixtures', 'file_2_two_level.json')
     file_res = os.path.join(current_dir, 'fixtures', 'res_test_two_level.txt')
+    formatter = 'stylish'
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert generate_diff(file_path1, file_path2, 'stylish') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, formatter) == str(res_file_1_2)
 
 
 def test_two_level_plain_yml():
@@ -57,9 +62,10 @@ def test_two_level_plain_yml():
     file_path1 = os.path.join(current_dir, 'fixtures', 'yml_file_1_two_level.yml')
     file_path2 = os.path.join(current_dir, 'fixtures', 'yml_file_2_two_level.yml')
     file_res = os.path.join(current_dir, 'fixtures', 'res_plain_yml.txt')
+    formatter = 'plain'
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert generate_diff(file_path1, file_path2, 'plain') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, formatter) == str(res_file_1_2)
 
 
 def test_two_level_plain_json():
@@ -67,6 +73,7 @@ def test_two_level_plain_json():
     file_path1 = os.path.join(current_dir, 'fixtures', 'file_1_two_level.json')
     file_path2 = os.path.join(current_dir, 'fixtures', 'file_2_two_level.json')
     file_res = os.path.join(current_dir, 'fixtures', 'res_plain_json.txt')
+    formatter = 'plain'
     with open(file_res, 'r') as res_test_1_2:
         res_file_1_2 = res_test_1_2.read()
-    assert generate_diff(file_path1, file_path2, 'plain') == str(res_file_1_2)
+    assert generate_diff(file_path1, file_path2, formatter) == str(res_file_1_2)

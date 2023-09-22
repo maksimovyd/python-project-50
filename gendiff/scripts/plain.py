@@ -6,7 +6,7 @@ def plain(res_dict, dict_one, dict_two, path=[], res_str=''):
             if isinstance(value, dict):
                 if key[4:] in dict_one and key[4:] in dict_two:
                     if (isinstance(dict_one[key[4:]], dict) and
-                            isinstance(dict_two[key[4:]], dict)):
+                       isinstance(dict_two[key[4:]], dict)):
                         res_str += (
                             plain(
                                 res_dict[key], dict_one[key[4:]],

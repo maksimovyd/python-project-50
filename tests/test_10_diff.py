@@ -26,3 +26,15 @@ def test_generate_diff(path1, path2, format_name, expected):
         diff = generate_diff(path1, path2, format_name)
     with open(expected) as f:
         assert diff == f.read()
+
+
+@pytest.mark.parametrize(format, test_cases)
+def test_generate_diff(format):
+    file_path1 = get_path(f'file1.{format}')
+    file_path2 = get_path(f'file2.{format}')
+    result_stylish = generate_diff(file_path1, file_path2, format)
+    assert generate_diff(file_path1, file_path2) == result_stylish
+
+
+def get_path(str_path):
+    return 'tests/fixtures/' + str_path

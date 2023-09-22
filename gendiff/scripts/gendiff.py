@@ -60,8 +60,7 @@ def create_diff(dict_one, dict_two):
                isinstance(dict_two[key_], dict):
                 res_dict[('    ' + key_)] = create_diff(
                     dict_one[key_],
-                    dict_two[key_]
-                    )
+                    dict_two[key_])
             elif dict_one[key_] == dict_two[key_]:
                 res_dict[('    ' + key_)] = dict_one[key_]
             else:

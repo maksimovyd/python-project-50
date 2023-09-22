@@ -1,6 +1,5 @@
 import argparse
 import json
-import os
 from gendiff.scripts.parser import read_files_to_dict
 from gendiff.scripts.stylish import stylish
 from gendiff.scripts.plain import plain
@@ -58,7 +57,7 @@ def create_diff(dict_one, dict_two):
     for key_ in all_keys:
         if key_ in dict_one and key_ in dict_two:
             if isinstance(dict_one[key_], dict) and \
-                isinstance(dict_two[key_], dict):
+               isinstance(dict_two[key_], dict):
                 res_dict[('    ' +
                           key_)] = create_diff(dict_one[key_], dict_two[key_])
             elif dict_one[key_] == dict_two[key_]:
@@ -79,8 +78,9 @@ def create_diff_json(dict_one, dict_two):
     for key_ in all_keys:
         if key_ in dict_one and key_ in dict_two:
             if isinstance(dict_one[key_], dict) and \
-                isinstance(dict_two[key_], dict):
-                res_dict[key_] = create_diff_json(dict_one[key_], dict_two[key_])
+               isinstance(dict_two[key_], dict):
+                res_dict[key_] = create_diff_json(dict_one[key_],
+                                                  dict_two[key_])
             elif dict_one[key_] == dict_two[key_]:
                 res_dict[key_] = dict_one[key_]
             else:

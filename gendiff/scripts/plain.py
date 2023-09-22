@@ -5,8 +5,8 @@ def plain(res_dict, dict_one, dict_two, path=[], res_str=''):
         if key[:1] == ' ':
             if isinstance(value, dict):
                 if key[4:] in dict_one and key[4:] in dict_two:
-                    if (isinstance(dict_one[key[4:]], dict) and
-                            isinstance(dict_two[key[4:]], dict)):
+                    if (isinstance(dict_one[key[4:]], dict)
+                            and isinstance(dict_two[key[4:]], dict)):
                         res_str += (
                             plain(
                                 res_dict[key], dict_one[key[4:]],
@@ -17,8 +17,8 @@ def plain(res_dict, dict_one, dict_two, path=[], res_str=''):
         substring = ''
         if key[4:] in dict_one and key[4:] not in dict_two:
             substring = f'Property \'{".".join(path)}\' was removed\n'
-        elif (key[4:] in dict_one and key[4:] in dict_two and
-              dict_one[key[4:]] != dict_two[key[4:]]):
+        elif (key[4:] in dict_one and key[4:] in dict_two
+              and dict_one[key[4:]] != dict_two[key[4:]]):
             substring = (
                 f'Property \'{".".join(path)}\' was updated. '
                 f'From {refund_val(dict_one[key[4:]])} '

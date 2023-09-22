@@ -1,4 +1,3 @@
-import os
 from gendiff.scripts.gendiff import generate_diff
 import pytest
 
@@ -21,5 +20,6 @@ formats = ['stylish', 'plain', 'json']
                                                                  (json_1, json_2, formats[2], res_json),
                                                                  (yaml_1, yaml_2, formats[2], res_json)])
 def test_generate_diff(path1, path2, format_name, expected):
+    diff = generate_diff(path1, path2, format_name)
     with open(expected) as f:
-        assert generate_diff(path1, path2, format_name) == f.read()
+        assert diff == f.read()
